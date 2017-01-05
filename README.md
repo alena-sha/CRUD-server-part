@@ -1,6 +1,6 @@
 # CRUD-server-part
 
-Simple CRUD app which consists of server and client parts.
+A simple CRUD app which consists of server and client parts.
 Server part demonstrates integration of popular JavaEE frameworks and technologies: Spring 4 (Spring Core, Spring Security, 
 Spring MVC), Hibernate 5, Maven 4, SLF4J, REST WebService, JUnit 4.
 Client part is developed with help of AngularJs 1.5, Angular Material.
