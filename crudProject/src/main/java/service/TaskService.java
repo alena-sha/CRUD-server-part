@@ -14,7 +14,6 @@ import model.Task;
 @Component
 public class TaskService extends AbstractService<Task> implements ITaskService {
 	private TaskDAO taskDao;
-
 	public TaskService() {
 
 	}
@@ -24,6 +23,7 @@ public class TaskService extends AbstractService<Task> implements ITaskService {
 		super(abstractDao);
 		this.taskDao = (TaskDAO) abstractDao;
 	}
+	
 	@Transactional
 	@Override
 	public List<Task> viewTaskForEmployee(int id) {

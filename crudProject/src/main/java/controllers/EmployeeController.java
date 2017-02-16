@@ -29,7 +29,6 @@ public class EmployeeController {
 	public EmployeeController(IEmployeeService service) {
 		this.service = service;
 		// logger.info("constructor");
-
 	}
 
 	
@@ -37,7 +36,6 @@ public class EmployeeController {
 	public List<Employee> employees() { 
 		 logger.info("in employeeList"); 
 		 List<Employee> list=service.findAll(); 
-		 
 		 return list; 
 	}	 
 	
@@ -60,9 +58,13 @@ public class EmployeeController {
 			emp.setImage(image);	
 			
 		}else{
-			emp.setImage(null);	
-		}		
+			if(emp.getId()!=null){
+				emp.setImage(service.get(emp.getId()).getImage());
+			}else{
+				emp.setImage(null);	
+			}
 			
+		}		
 		logger.info("in updateEmployee"); 
 		service.save(emp);
 	
@@ -76,8 +78,5 @@ public class EmployeeController {
 		 Employee e=new Employee();
 		 e.setId(id);
 		 service.delete(e);
-		
 	}	
-
-	
 }

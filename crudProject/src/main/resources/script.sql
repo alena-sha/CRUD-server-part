@@ -8,7 +8,7 @@ CREATE TABLE `employee`.`Employee` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `firstName` varchar(30) DEFAULT NULL,
   `lastName` varchar(30) DEFAULT NULL,
-`gender` varchar(2) DEFAULT NULL,
+`gender` varchar(6) DEFAULT NULL,
 `dateOfBirth` datetime NOT NULL ,
 `position` varchar(50) DEFAULT NULL,
 `comment` varchar(30) DEFAULT NULL,

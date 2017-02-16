@@ -14,6 +14,7 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standal
 import java.nio.charset.Charset;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Before;
@@ -30,6 +31,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 
 import model.Employee;
+import model.Gender;
 import service.IEmployeeService;
 @ContextConfiguration(locations = "classpath*:applicationContext.xml") 
 @WebAppConfiguration() 
@@ -57,28 +59,10 @@ public class EmployeeControllerTest {
 	  
 	  @Test
 	public void testEmployees() throws Exception{
-		Employee emp1=new Employee();
-		emp1.setId(1);
-		emp1.setFirstName("Nick");
-		emp1.setLastName("Nickonov");
-		emp1.setDateOfBirth(LocalDate.now());
-		emp1.setGender("m");
-		emp1.setPosition("chief");
-		emp1.setLogin("nick");
-		emp1.setPassword("nick");
 		
-		Employee emp2=new Employee();
-		emp2.setId(2);
-		emp2.setFirstName("Petr");
-		emp2.setLastName("Petrov");
-		emp2.setDateOfBirth(LocalDate.now());
-		emp2.setGender("m");
-		emp2.setPosition("engineer");
-		emp2.setLogin("petr");
-		emp2.setPassword("petr");
-		List<Employee> list=new ArrayList();
-		list.add(emp1);
-		list.add(emp2);
+		  List<Employee> list=Arrays.asList(new Employee("Nick","Nickonov",LocalDate.now(),Gender.MALE,"chief","nick","nick"),
+				  new Employee("Petr","Petrov",LocalDate.now(),Gender.FEMALE,"engineer","petr","dfgdg"));
+		
 		 when(employeeServiceMock.findAll()).thenReturn(list);
 		
 	        mockMvc.perform(get("/employee"))

@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import model.Employee;
+import model.Gender;
 import dao.EmployeeDAO;
 @ContextConfiguration(locations = {"classpath*:applicationContext-test.xml","classpath*:dispatcher-servlet.xml" }) 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -24,14 +25,7 @@ public class EmployeeDAOTest {
 	private EmployeeDAO employeeDAO;
 	@Test
 	public void testSaveEmployee() {
-		Employee emp=new Employee();
-		emp.setFirstName("Nick");
-		emp.setLastName("Nickonov");
-		emp.setDateOfBirth(LocalDate.now());
-		emp.setGender("f");
-		emp.setPosition("chief");
-		emp.setLogin("nick");
-		emp.setPassword("nick");
+		Employee emp=new Employee("Nick","Nickonov",LocalDate.now(),Gender.MALE,"chief","nick","nick");
 		employeeDAO.save(emp);
 		List<Employee> list=employeeDAO.findAll();
 		assertEquals(emp.getFirstName(),list.get(0).getFirstName());

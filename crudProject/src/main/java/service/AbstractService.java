@@ -31,27 +31,21 @@ public abstract class AbstractService<T> implements IAbstractService<T> {
 	@Transactional
 	@Override
 	public T save(T object) {
-
 		return abstractDao.save(object);
-
 	}
 
 	@Transactional
 	public void delete(T object) {
-
 		abstractDao.delete(object);
-
 	}
 
 	@Override
 	public List<T> findAll() {
-
 		return abstractDao.findAll();
 	}
 
 	@Override
 	public T get(int id) {
-
 		return abstractDao.get(id);
 	}
 
